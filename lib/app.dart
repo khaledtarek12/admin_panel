@@ -4,9 +4,8 @@ import 'package:t_store_web_adimn/common/styles/custom_loading.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/theme/theme.dart';
 
-
-class AdminWebPanel extends StatelessWidget {
-  const AdminWebPanel({super.key});
+class WebAdminPanel extends StatelessWidget {
+  const WebAdminPanel({super.key});
 
   @override
   Widget build(BuildContext context) {

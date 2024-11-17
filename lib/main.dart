@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:t_store_web_adimn/app.dart';
 
 void main() async {
-    //...FireBase
+  //...FireBase
   WidgetsFlutterBinding.ensureInitialized();
 
-    //...Get Storage
+  //...Get Storage
 
-      //...Await Sptlash until otner items Load
-  runApp(const AdminWebPanel());
+  //...Await Sptlash until otner items Load
+  runApp(const WebAdminPanel());
 }
