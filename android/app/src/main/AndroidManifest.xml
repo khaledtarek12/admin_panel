@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.t_store_web_adimn">
     <application
         android:label="t_store_web_adimn"
         android:name="${applicationName}"
