@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_store_web_adimn/common/layouts/grid_layout.dart';
+import 'package:t_store_web_adimn/common/widgets/layouts/grid_layout.dart';
 import 'package:t_store_web_adimn/common/widgets/loading/skeltionizer.dart';
 
 class TBrandShammer extends StatelessWidget {

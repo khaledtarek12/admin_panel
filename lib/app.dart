@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store_web_adimn/common/widgets/custom_shapes/container/rounded_container.dart';
+import 'package:t_store_web_adimn/common/widgets/layouts/header/templates/site_layout.dart';
+import 'package:t_store_web_adimn/common/widgets/responsive/responsive_desgin.dart';
 import 'package:t_store_web_adimn/routes/app_routes.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';
@@ -37,24 +39,10 @@ class ResposiveDesignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth >= 1366) {
-                return const DeskTop();
-              } else if (constraints.maxWidth < 1366 &&
-                  constraints.maxWidth >= 768) {
-                return const Tablet();
-              } else {
-                return const Mobile();
-              }
-            },
-          ),
-        ),
-      ),
+    return const TSiteTemplate(
+      desktop: DeskTop(),
+      tablet: Tablet(),
+      mobile: Mobile(),
     );
   }
 }

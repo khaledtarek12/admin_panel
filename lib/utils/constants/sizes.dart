@@ -1,4 +1,9 @@
 class TSizes {
+
+  // screen width 
+    static const double desktopScreenSize = 1366;
+    static const double tabletScreenSize = 768;
+
   // Pading And Margin Sizes
   static const double xs = 4.0;
   static const double sm = 8.0;
