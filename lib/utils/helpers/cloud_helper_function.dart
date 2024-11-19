@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:t_store_web_adimn/common/styles/custom_loading.dart';
+import 'package:t_store_web_adimn/common/widgets/loading/custom_loading.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/helpers/firebase_storage.dart';
 import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';

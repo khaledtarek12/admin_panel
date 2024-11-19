@@ -1,7 +1,7 @@
 import 'dart:ui'; // Import for the Blur effect
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t_store_web_adimn/common/styles/animation_loader.dart';
+import 'package:t_store_web_adimn/common/widgets/loading/animation_loader.dart';
 
 class TFullScreenLoader {
   static void openLoadingDialog(String text, String animation) {
