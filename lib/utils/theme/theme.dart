@@ -15,10 +15,10 @@ class TAppTheme {
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: 'Urbanist',
     brightness: Brightness.light,
     primaryColor: TColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: TColors.softGrey,
     textTheme: TTextThemes.lightTextTheme,
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     chipTheme: TChipTheme.lightChipTheme,
@@ -31,7 +31,7 @@ class TAppTheme {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: 'Urbanist',
     brightness: Brightness.dark,
     primaryColor: TColors.primary,
     scaffoldBackgroundColor: TColors.black,

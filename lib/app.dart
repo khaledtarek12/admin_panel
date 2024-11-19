@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:t_store_web_adimn/common/styles/custom_loading.dart';
-import 'package:t_store_web_adimn/utils/constants/colors.dart';
+import 'package:get/get.dart';
+import 'package:t_store_web_adimn/common/widgets/custom_shapes/container/rounded_container.dart';
+import 'package:t_store_web_adimn/routes/app_routes.dart';
+import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';
 import 'package:t_store_web_adimn/utils/theme/theme.dart';
 
@@ -16,9 +17,320 @@ class WebAdminPanel extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const Scaffold(
-        backgroundColor: TColors.primary,
-        body: CustomLoading(),
+      getPages: TAppRoutes.pages,
+      initialRoute: TRoutes.resposiveDesignScreen,
+      unknownRoute: GetPage(
+        name: '/page-not-found',
+        page: () => Scaffold(
+          body: Center(
+            child: Text('Page Not Found',
+                style: Theme.of(context).textTheme.titleLarge),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ResposiveDesignScreen extends StatelessWidget {
+  const ResposiveDesignScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth >= 1366) {
+                return const DeskTop();
+              } else if (constraints.maxWidth < 1366 &&
+                  constraints.maxWidth >= 768) {
+                return const Tablet();
+              } else {
+                return const Mobile();
+              }
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DeskTop extends StatelessWidget {
+  const DeskTop({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //  -- Frist Row
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  TRoundedContainer(
+                    height: 450,
+                    backgroundCoIor: Colors.blue.withOpacity(0.2),
+                    child: const Center(child: Text('Box1')),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TRoundedContainer(
+                    height: 215,
+                    backgroundCoIor: Colors.yellow.withOpacity(0.2),
+                    child: const Center(child: Text('Box1')),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TRoundedContainer(
+                          height: 215,
+                          backgroundCoIor: Colors.pink.withOpacity(0.2),
+                          child: const Center(child: Text('Box1')),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: TRoundedContainer(
+                          height: 215,
+                          backgroundCoIor: Colors.lightGreen.withOpacity(0.2),
+                          child: const Center(child: Text('Box1')),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+
+        // -- Second Row
+        const SizedBox(height: 20),
+        Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: TRoundedContainer(
+                height: 220,
+                backgroundCoIor: Colors.red.withOpacity(0.2),
+                child: const Center(child: Text('Box1')),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: TRoundedContainer(
+                height: 220,
+                backgroundCoIor: Colors.red.withOpacity(0.2),
+                child: const Center(child: Text('Box1')),
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class Mobile extends StatelessWidget {
+  const Mobile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //  -- Frist Row
+        TRoundedContainer(
+          height: 450,
+          width: double.infinity,
+          backgroundCoIor: Colors.blue.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        ),
+        const SizedBox(height: 20),
+        TRoundedContainer(
+          height: 215,
+          width: double.infinity,
+          backgroundCoIor: Colors.yellow.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        ),
+        const SizedBox(height: 20),
+        TRoundedContainer(
+          height: 215,
+          width: double.infinity,
+          backgroundCoIor: Colors.pink.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        ),
+        const SizedBox(height: 20),
+        TRoundedContainer(
+          height: 215,
+          width: double.infinity,
+          backgroundCoIor: Colors.lightGreen.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        ),
+        const SizedBox(height: 20),
+
+        // -- Second Row
+        TRoundedContainer(
+          height: 220,
+          width: double.infinity,
+          backgroundCoIor: Colors.red.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        ),
+        const SizedBox(height: 20),
+        TRoundedContainer(
+          height: 220,
+          width: double.infinity,
+          backgroundCoIor: Colors.red.withOpacity(0.2),
+          child: const Center(child: Text('Box1')),
+        )
+      ],
+    );
+  }
+}
+
+class Tablet extends StatelessWidget {
+  const Tablet({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //  -- Frist Row
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  TRoundedContainer(
+                    height: 450,
+                    backgroundCoIor: Colors.blue.withOpacity(0.2),
+                    child: const Center(child: Text('Box1')),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TRoundedContainer(
+                    height: 215,
+                    backgroundCoIor: Colors.yellow.withOpacity(0.2),
+                    child: const Center(child: Text('Box1')),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TRoundedContainer(
+                          height: 215,
+                          backgroundCoIor: Colors.pink.withOpacity(0.2),
+                          child: const Center(child: Text('Box1')),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: TRoundedContainer(
+                          height: 215,
+                          backgroundCoIor: Colors.lightGreen.withOpacity(0.2),
+                          child: const Center(child: Text('Box1')),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        const SizedBox(height: 20),
+
+        // -- Second Row
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TRoundedContainer(
+              height: 220,
+              width: double.infinity,
+              backgroundCoIor: Colors.red.withOpacity(0.2),
+              child: const Center(child: Text('Box1')),
+            ),
+            const SizedBox(height: 20),
+            TRoundedContainer(
+              height: 220,
+              width: double.infinity,
+              backgroundCoIor: Colors.red.withOpacity(0.2),
+              child: const Center(child: Text('Box1')),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('First Screen'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SizedBox(
+          width: 250,
+          child: ElevatedButton(
+              onPressed: () => Get.toNamed(TRoutes.secondScreen),
+              child: const Text('Second Screen')),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('Second Screen'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SizedBox(
+          width: 250,
+          child: ElevatedButton(
+              onPressed: () => Get.back(), child: const Text('First Screen')),
+        ),
       ),
     );
   }
