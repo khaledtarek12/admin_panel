@@ -27,11 +27,11 @@ class TImages {
   static const String checkEmaiLight =
       'assets/images/on_boarding_images/check_emai_light.gif';
   static const String verifyEmail =
-      'assets/images/verify_email/send_email_verfication.png';
+      'assets/images/on_boarding_images/send_email_verfication.png';
   static const String resetPassword =
       'assets/images/on_boarding_images/reset-password-compressed.gif';
   static const String emailCreatedSuccefully =
-      'assets/images/verify_email/email_created_success.png';
+      'assets/images/on_boarding_images/email_created_success.png';
 
   // Social logo
   static const String facebook = 'assets/logos/facebook.png';
