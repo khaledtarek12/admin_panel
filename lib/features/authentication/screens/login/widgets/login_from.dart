@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/constants/sizes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';
-import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 import 'package:t_store_web_adimn/utils/validators/validation.dart';
 
 class TLoginForm extends StatelessWidget {
@@ -11,8 +9,6 @@ class TLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
-
     return Form(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwScetions),
@@ -79,20 +75,6 @@ class TLoginForm extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 child: const Text(TTexts.signIn),
-              ),
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems),
-
-            //Create accout button
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(
-                      color: dark ? TColors.darkGrey : TColors.grey, width: 2),
-                ),
-                child: const Text(TTexts.createAccount),
-                onPressed: () {},
               ),
             ),
           ],
