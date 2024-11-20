@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:t_store_web_adimn/utils/constants/sizes.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TDeviceUtility {
@@ -111,5 +112,18 @@ class TDeviceUtility {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static bool isDesktopScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= TSizes.desktopScreenSize;
+  }
+
+  static bool isTabletScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width >= TSizes.tabletScreenSize &&
+        MediaQuery.of(context).size.width < TSizes.desktopScreenSize;
+  }
+
+  static bool isMobileScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width < TSizes.tabletScreenSize;
   }
 }

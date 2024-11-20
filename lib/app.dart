@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store_web_adimn/common/widgets/custom_shapes/container/rounded_container.dart';
-import 'package:t_store_web_adimn/common/widgets/layouts/header/templates/site_layout.dart';
-import 'package:t_store_web_adimn/common/widgets/responsive/responsive_desgin.dart';
+import 'package:t_store_web_adimn/common/widgets/layouts/templates/site_layout.dart';
 import 'package:t_store_web_adimn/routes/app_routes.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';

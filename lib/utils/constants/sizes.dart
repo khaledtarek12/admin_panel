@@ -1,8 +1,9 @@
 class TSizes {
-
-  // screen width 
-    static const double desktopScreenSize = 1366;
-    static const double tabletScreenSize = 768;
+  // screen width
+  static const int desktopScreenSize = 1366;
+  static const int tabletScreenSize = 768;
+  static const int mobileScreenSize = 360;
+  static const int customScreenSize = 1100;
 
   // Pading And Margin Sizes
   static const double xs = 4.0;
@@ -24,8 +25,8 @@ class TSizes {
 
   // Button Sized
   static const double buttonHeight = 18.0;
-  static const double buttonRadius = 12.0;
-  static const double buttonWidth = 120.0;
+  static const double buttonRadius = 10.0;
+  static const double buttonWidth = 130.0;
   static const double buttonElevation = 4.0;
 
   // AppBar Height

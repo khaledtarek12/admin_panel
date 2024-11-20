@@ -36,12 +36,13 @@ class TImages {
   // Social logo
   static const String facebook = 'assets/logos/facebook.png';
   static const String google = 'assets/logos/google.png';
-  static const String user = 'assets/images/user/user.png';
+  static const String user = 'assets/images/content/userAvatar.png';
 
   // Animation
   static const String loading = 'assets/images/loading/AnikiHamster.json';
   static const String cartEmpty = 'assets/images/loading/cartEmpty.json';
-  static const String orderConfirmed = 'assets/images/loading/orderConfirmed.json';
+  static const String orderConfirmed =
+      'assets/images/loading/orderConfirmed.json';
   static const String successEmail = 'assets/images/loading/successEmail.json';
   static const String pencilAnimation =
       'assets/images/loading/pencilAnimation.json';

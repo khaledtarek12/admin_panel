@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class TColors {
   TColors._();
-//App Basics Colors
+  //App Basics Colors
   static const Color primary = Color(0xff4b68ff);
   static const Color secondey = Color(0xffffe24b);
   static const Color accent = Color(0xff4b68ff);
+
+  // icons
+  static const Color iconPrimary = Color(0xff8d8d8d);
 
   //gradient Colors
   static const Gradient linearGrident = LinearGradient(
