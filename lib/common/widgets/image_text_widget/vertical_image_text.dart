@@ -37,7 +37,6 @@ class TVerticallmageText extends StatelessWidget {
               image: image,
               fit: BoxFit.fitWidth,
               padding: TSizes.sm * 1.4,
-              isNetworkImage: isNetworkImage,
               backgroundColor: backGroundColor,
               overLayColor: dark ? TColors.light : TColors.dark,
             ),

@@ -34,7 +34,7 @@ class TAppTheme {
     fontFamily: 'Urbanist',
     brightness: Brightness.dark,
     primaryColor: TColors.primary,
-    scaffoldBackgroundColor: TColors.black,
+    scaffoldBackgroundColor: TColors.black.withOpacity(0.9),
     textTheme: TTextThemes.dartTextTheme,
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     chipTheme: TChipTheme.darkChipTheme,

@@ -1,15 +1,7 @@
 class TRoutes {
-
-    static const firstScreen = '/';
-    static const secondScreen = '/secondScreen';
-    static const secondScreenWithUID = '/secondScreen/:userId';
-    static const resposiveDesignScreen = '/ResposiveDesignScreen';
-
-
-  
   static const login = '/login';
-  static const forgetPassword = '/forgetPassword';
-  static const resetPassword = '/resetPassword';
+  static const forgetPassword = '/forget-password';
+  static const resetPassword = '/reset-password';
   static const dashboard = '/dashboard';
   static const media = '/media';
 
@@ -36,4 +28,7 @@ class TRoutes {
   static const orders = '/orders';
   static const createOrder = '/createOrder';
   static const editOrder = '/editOrder';
+
+  static List sidebarMenuItems = [
+  ];
 }

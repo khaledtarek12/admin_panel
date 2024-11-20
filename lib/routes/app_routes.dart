@@ -1,22 +1,15 @@
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:t_store_web_adimn/app.dart';
-import 'package:t_store_web_adimn/routes/route_middleware.dart';
+import 'package:t_store_web_adimn/features/authentication/screens/login/login.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 
 class TAppRoutes {
   static final List<GetPage> pages = [
     GetPage(
-        name: TRoutes.firstScreen,
-        page: () => const FirstScreen(),
-        middlewares: [TRouteMiddleware()]),
-    GetPage(
-        name: TRoutes.secondScreen,
-        page: () => const SecondScreen(),
-        middlewares: [TRouteMiddleware()]),
-    GetPage(
-        name: TRoutes.secondScreenWithUID, page: () => const SecondScreen()),
-    GetPage(
-        name: TRoutes.resposiveDesignScreen, page: () => const ResposiveDesignScreen()),
+      name: TRoutes.login,
+      page: () => const LoginScreen(),
+      // middlewares: [TRouteMiddleware()]
+    ),
+
     // GetPage(name: TRoutes.login, page: () => LoginScreen()),
     // GetPage(name: TRoutes.forgetPassword, page: () => ForgetPasswordScreen()),
     // GetPage(name: TRoutes.resetPassword, page: () => RestPasswordScreen()),

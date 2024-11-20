@@ -9,7 +9,7 @@ import 'package:t_store_web_adimn/utils/device/device_utility.dart';
 import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 
 class THeader extends StatelessWidget implements PreferredSizeWidget {
-  const THeader({super.key,  this.scaffoldKey});
+  const THeader({super.key, this.scaffoldKey});
 
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
@@ -18,13 +18,9 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       decoration: BoxDecoration(
         color:
-            THelperFunction.isDarkMode(context) ? Colors.black : TColors.white,
-        border: Border(
-          bottom: BorderSide(
-              color: THelperFunction.isDarkMode(context)
-                  ? Colors.black
-                  : TColors.white,
-              width: 2),
+            THelperFunction.isDarkMode(context) ? TColors.black : TColors.white,
+        border: const Border(
+          bottom: BorderSide(color: TColors.darkerGrey, width: 2),
         ),
       ),
       padding: const EdgeInsets.symmetric(
