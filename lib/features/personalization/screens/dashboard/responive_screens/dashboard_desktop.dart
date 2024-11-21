@@ -5,9 +5,12 @@ class DashboardDesktopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('DASHBOARD'),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .45),
+        child: const Center(
+          child: Text('DASHBOARD'),
+        ),
       ),
     );
   }
