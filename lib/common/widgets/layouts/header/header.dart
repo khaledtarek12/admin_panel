@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store_web_adimn/common/widgets/images/t_rounded_images.dart';
+import 'package:t_store_web_adimn/common/widgets/loading/skeltionizer.dart';
+import 'package:t_store_web_adimn/features/authentication/controllers/user_controller.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/constants/enums.dart';
 import 'package:t_store_web_adimn/utils/constants/image_strings.dart';
@@ -15,6 +18,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Container(
       decoration: BoxDecoration(
         color:
@@ -77,32 +81,48 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
           const SizedBox(width: TSizes.spaceBtwItems / 2),
 
           // User Data
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TRoundedlmage(
-                imageType: ImageType.asset,
-                image: TImages.user,
-                width: 40,
-                padding: 2,
-                hight: 40,
+              Obx(
+                () {
+                  return TRoundedlmage(
+                    imageType: controller.user.value.profilePicture.isNotEmpty
+                        ? ImageType.network
+                        : ImageType.asset,
+                    image: controller.user.value.profilePicture.isNotEmpty
+                        ? controller.user.value.profilePicture
+                        : TImages.user,
+                    width: 40,
+                    padding: 2,
+                    hight: 40,
+                  );
+                },
               ),
-              SizedBox(width: TSizes.sm),
+              const SizedBox(width: TSizes.sm),
+
+              // Name and Email
+              if (!TDeviceUtility.isMobileScreen(context))
+                Obx(
+                  () {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        controller.loading.value
+                            ? const TShammerEffect(width: 50, height: 13)
+                            : Text(controller.user.value.fullName,
+                                style: Theme.of(context).textTheme.titleLarge),
+                        controller.loading.value
+                            ? const TShammerEffect(width: 50, height: 13)
+                            : Text(controller.user.value.email,
+                                style: Theme.of(context).textTheme.labelLarge)
+                      ],
+                    );
+                  },
+                ),
             ],
           ),
-
-          // Name and Email
-          if (!TDeviceUtility.isMobileScreen(context))
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Khaled Tarek',
-                    style: Theme.of(context).textTheme.titleLarge),
-                Text('tkhaled238@gmai.com',
-                    style: Theme.of(context).textTheme.labelLarge)
-              ],
-            )
         ],
       ),
     );

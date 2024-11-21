@@ -6,8 +6,8 @@ import 'package:t_store_web_adimn/utils/popups/loaders.dart';
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
-  final profileLoading = false.obs;
-
+  final loading = false.obs;
+  Rx<UserModel> user = UserModel.empty().obs;
   // final imageUploding = false.obs;
   // final hidePassword = true.obs;
   // final verifyEmail = TextEditingController();
@@ -18,18 +18,22 @@ class UserController extends GetxController {
 
   final userRepository = Get.put(UserRepository());
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   // fetchUserRecord();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserDetails();
+  }
 
   // Fetch user record
   Future<UserModel> fetchUserDetails() async {
     try {
+      loading.value = true;
       final userRecord = await userRepository.fetchAdminDetails();
+      user.value = userRecord;
+      loading.value = false;
       return userRecord;
     } catch (e) {
+      loading.value = false;
       TLoaders.errorSnakBar(
           title: 'Something went wrong.', message: e.toString());
       return UserModel.empty();

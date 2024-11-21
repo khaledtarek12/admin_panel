@@ -3,13 +3,12 @@ import 'package:shimmer/shimmer.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 
-
 class TShammerEffect extends StatelessWidget {
   const TShammerEffect({
     super.key,
     required this.width,
     required this.height,
-    this.radius = 12,
+    this.radius = 15,
     this.color,
   });
 
@@ -26,6 +25,7 @@ class TShammerEffect extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
+        margin: const EdgeInsets.symmetric(vertical: 4),
         decoration: BoxDecoration(
           color: color ?? (dark ? TColors.darkerGrey : TColors.white),
           borderRadius: BorderRadius.circular(radius),

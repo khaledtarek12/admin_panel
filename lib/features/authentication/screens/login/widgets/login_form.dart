@@ -99,7 +99,7 @@ class TLoginForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 child: const Text(TTexts.signIn),
-                onPressed: () => controller.registerAdmin(),
+                onPressed: () => controller.emailAndPasswordSignin(),
                 // onPressed: () => controller.emailAndPasswordSignin(),
               ),
             ),
