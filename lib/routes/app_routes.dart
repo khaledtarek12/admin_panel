@@ -2,6 +2,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/forget_password/forget_password.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/login/login.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/reset_password/reset_password.dart';
+import 'package:t_store_web_adimn/features/personalization/screens/dashboard/dashboard.dart';
+import 'package:t_store_web_adimn/routes/route_middleware.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 
 class TAppRoutes {
@@ -18,7 +20,15 @@ class TAppRoutes {
     ),
 
     GetPage(
-        name: TRoutes.resetPassword, page: () => const ResetPasswordScreen()),
+      name: TRoutes.resetPassword,
+      page: () => const ResetPasswordScreen(),
+    ),
+
+    GetPage(
+      name: TRoutes.dashboard,
+      page: () => const DashboardScreen(),
+      middlewares: [TRouteMiddleware()],
+    ),
     // GetPage(
     //     name: TRoutes.dashboard,
     //     page: () => DashboardScreen(),

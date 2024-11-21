@@ -17,7 +17,7 @@ class WebAdminPanel extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       getPages: TAppRoutes.pages,
-      initialRoute: TRoutes.login,
+      initialRoute: TRoutes.dashboard,
       unknownRoute: GetPage(
         name: '/page-not-found',
         page: () => Scaffold(

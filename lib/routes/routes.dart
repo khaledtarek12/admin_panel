@@ -29,5 +29,7 @@ class TRoutes {
   static const createOrder = '/createOrder';
   static const editOrder = '/editOrder';
 
-  static List sidebarMenuItems = [];
+  static List sidebarMenuItems = [
+    dashboard,
+  ];
 }
