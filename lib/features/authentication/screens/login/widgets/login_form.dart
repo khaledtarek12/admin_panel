@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store_web_adimn/features/authentication/controllers/login_controller.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/sizes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';
@@ -11,42 +12,56 @@ class TLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwScetions),
         child: Column(
           children: [
             //   Email
             TextFormField(
-              // focusNode: controller.fEmailNode,
-              // controller: controller.email,
+              focusNode: controller.emailNode,
+              controller: controller.email,
               textInputAction: TextInputAction.next,
               validator: (value) => TValidator.emailValidator(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: TTexts.email,
               ),
-              // onFieldSubmitted: (value) =>
-              //     FocusScope.of(context).requestFocus(controller.fPasswordNode),
+              onFieldSubmitted: (value) =>
+                  FocusScope.of(context).requestFocus(controller.passwordNode),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
 
-            //   Email
-            TextFormField(
-              // focusNode: controller.fEmailNode,
-              // controller: controller.email,
-              textInputAction: TextInputAction.next,
-              validator: (value) => TValidator.emailValidator(value),
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Iconsax.password_check),
-                labelText: TTexts.password,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Iconsax.eye_slash),
-                ),
-              ),
-              // onFieldSubmitted: (value) =>
-              //     FocusScope.of(context).requestFocus(controller.fPasswordNode),
+            //   Password
+            Obx(
+              () {
+                return TextFormField(
+                  focusNode: controller.passwordNode,
+                  controller: controller.password,
+                  textInputAction: TextInputAction.done,
+                  obscureText: controller.hidePassword.value,
+                  validator: (value) =>
+                      TValidator.validateEmptyText('Password', value),
+                  onFieldSubmitted: (value) => FocusScope.of(context).unfocus(),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Iconsax.password_check),
+                    labelText: TTexts.password,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.hidePassword.value
+                            ? Iconsax.eye_slash
+                            : Iconsax.eye,
+                      ),
+                      onPressed: () {
+                        controller.hidePassword.value =
+                            !controller.hidePassword.value;
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields / 2),
 
@@ -58,7 +73,15 @@ class TLoginForm extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(
+                      () {
+                        return Checkbox(
+                            value: controller.rememberMe.value,
+                            onChanged: (value) {
+                              controller.rememberMe.value = value!;
+                            });
+                      },
+                    ),
                     const Text(TTexts.rememberMe),
                   ],
                 ),
@@ -75,8 +98,9 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
                 child: const Text(TTexts.signIn),
+                onPressed: () => controller.registerAdmin(),
+                // onPressed: () => controller.emailAndPasswordSignin(),
               ),
             ),
           ],

@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 
-
 class TLoaders {
   static hideSnackBar() =>
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
@@ -35,6 +34,7 @@ class TLoaders {
     Get.snackbar(
       title,
       message,
+      maxWidth: 600,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
@@ -51,6 +51,7 @@ class TLoaders {
     Get.snackbar(
       title,
       message,
+      maxWidth: 600,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
@@ -67,6 +68,7 @@ class TLoaders {
     Get.snackbar(
       title,
       message,
+      maxWidth: 600,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,

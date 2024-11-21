@@ -1,3 +1,4 @@
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store_web_adimn/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store_web_adimn/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //...Get Storage
-
+  await GetStorage.init();
   //...Await Sptlash until otner items Load
 
   // remove # from the url

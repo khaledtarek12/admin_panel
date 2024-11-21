@@ -1,6 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
+import 'package:t_store_web_adimn/utils/exceptions/firebase_auth_exception.dart';
+import 'package:t_store_web_adimn/utils/exceptions/firebase_exception.dart';
+import 'package:t_store_web_adimn/utils/exceptions/format_exception.dart';
+import 'package:t_store_web_adimn/utils/exceptions/platform_exception.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -43,23 +48,46 @@ class AuthenticationRepository extends GetxController {
 
 /*..............................Email & Password sign-In..............................*/
   ///... (Email Authentication) - Signin
-  // Future<UserCredential> loginWithEmaitAndPassword(
-  //     {required email, required password}) async {
-  //   try {
-  //     return await auth.signInWithEmailAndPassword(
-  //         email: email, password: password);
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseAuthException(code: e.code).message;
-  //   } on FirebaseException catch (e) {
-  //     throw TFirebaseException(code: e.code).message;
-  //   } on FormatException catch (_) {
-  //     throw const TFormatException();
-  //   } on PlatformException catch (e) {
-  //     throw TPlatformException(code: e.code).message;
-  //   } catch (e) {
-  //     throw 'somethinq went wrong. Please try again';
-  //   }
-  // }
+  Future<UserCredential> loginWithEmaitAndPassword(
+      {required email, required password}) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again \n $e';
+    }
+  }
+
+  ///... (Email Authentication) - REGISTER
+  Future<UserCredential> registerWithEmaitAndPassword(
+      {required email, required password}) async {
+    try {
+      return await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again \n$e';
+    }
+  }
 
   ///... (Email Authentication) - MAIL VERIFICATION
   // Future<void> sendEmailVerification() async {
@@ -124,23 +152,22 @@ class AuthenticationRepository extends GetxController {
 
 /*............................... ./end Federated identity & social sign-in..............................*/
   ///... (Logoutuser) - Valid for any authentication.
-  // Future<void> logout() async {
-  //   try {
-  //     await GoogleSignIn().signOut();
-  //     await FirebaseAuth.instance.signOut();
-  //     Get.offAll(() => const LoginScreen());
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseAuthException(code: e.code).message;
-  //   } on FirebaseException catch (e) {
-  //     throw TFirebaseException(code: e.code).message;
-  //   } on FormatException catch (_) {
-  //     throw const TFormatException();
-  //   } on PlatformException catch (e) {
-  //     throw TPlatformException(code: e.code).message;
-  //   } catch (e) {
-  //     throw 'somethinq went wrong. Please try again';
-  //   }
-  // }
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAllNamed(TRoutes.login);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again \n $e';
+    }
+  }
 
   ///... (Deteteuser) - Remove user Auth and Firestone Account.
   // Future<void> deleteAccount() async {

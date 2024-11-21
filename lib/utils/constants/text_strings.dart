@@ -1,4 +1,7 @@
 class TTexts {
+  static const String adminEmail = "tareqkhalid092@gmail.com";
+  static const String adminPassword = "01008509785";
+
   // Global Texts
   static const String submet = "Submit";
   static const String and = "And";

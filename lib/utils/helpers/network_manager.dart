@@ -15,7 +15,7 @@ class NetworkManager extends GetxController {
 
   // Observable list to store connectivity results
   final RxList<ConnectivityResult> connectionStatus =
-      [ConnectivityResult.none].obs;
+      <ConnectivityResult>[].obs;
 
   /// Initialize the network manager and set up a stream to continually check the connection status.
   @override
@@ -27,8 +27,8 @@ class NetworkManager extends GetxController {
 
   /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
   Future<void> updateConnectionStatus(List<ConnectivityResult> result) async {
-    connectionStatus.addAll(result);
-    if (result.isNotEmpty && result.last == ConnectivityResult.none) {
+    connectionStatus.value = result;
+    if (result.contains(ConnectivityResult.none)) {
       TLoaders.customToast(message: 'No Internet Connection');
     }
   }
@@ -38,7 +38,11 @@ class NetworkManager extends GetxController {
   Future<bool> isConnected() async {
     try {
       final result = await connectivity.checkConnectivity();
-      return result != ConnectivityResult.none;
+      if (result.any((element) => element == ConnectivityResult.none)) {
+        return false;
+      } else {
+        return true;
+      }
     } on PlatformException catch (_) {
       return false;
     }

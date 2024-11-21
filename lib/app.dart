@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:t_store_web_adimn/general_pindings.dart';
 import 'package:t_store_web_adimn/routes/app_routes.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/text_strings.dart';
@@ -18,6 +19,7 @@ class WebAdminPanel extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       getPages: TAppRoutes.pages,
       initialRoute: TRoutes.dashboard,
+      initialBinding: GeneralBindings(),
       unknownRoute: GetPage(
         name: '/page-not-found',
         page: () => Scaffold(

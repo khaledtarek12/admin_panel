@@ -2,9 +2,39 @@ import 'dart:ui'; // Import for the Blur effect
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store_web_adimn/common/widgets/loading/animation_loader.dart';
+import 'package:t_store_web_adimn/common/widgets/loading/custom_loading.dart';
+import 'package:t_store_web_adimn/utils/constants/colors.dart';
+import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 
 class TFullScreenLoader {
-  static void openLoadingDialog(String text, String animation) {
+  static void openDesktopLoadingDialog(String text, String animation) {
+    showDialog(
+      context: Get.overlayContext!,
+      barrierDismissible: false,
+      builder: (_) => PopScope(
+        canPop: false,
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: THelperFunction.isDarkMode(Get.context!)
+              ? TColors.dark
+              : TColors.white,
+          child: TAnimationLoaderWidgets(text: text, animation: animation),
+        ),
+      ),
+    );
+  }
+
+  static void popUPCircular() {
+    Get.defaultDialog(
+      title: '',
+      onWillPop: () async => false,
+      content: const CustomLoading(),
+      backgroundColor: Colors.transparent,
+    );
+  }
+
+  static void openMobileLoadingDialog(String text, String animation) {
     showDialog(
       context: Get.overlayContext!,
       barrierDismissible: false,
