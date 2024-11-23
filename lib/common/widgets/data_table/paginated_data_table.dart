@@ -34,7 +34,7 @@ class TPaginatedDataTable extends StatelessWidget {
   final DataTableSource source;
 
   /// List of columns for the Data Tab t e.
-  final List<DataColumn2> columns;
+  final List<DataColumn> columns;
 
   /// Cattback function to handle page changes.
   final Function(int)? onPageChanged;
@@ -67,6 +67,7 @@ class TPaginatedDataTable extends StatelessWidget {
           horizontalMargin: 12,
           rowsPerPage: rowsPerPage,
           dataRowHeight: dataRowHeight,
+
           headingTextStyle: Theme.of(context).textTheme.titleMedium,
           headingRowColor: WidgetStateProperty.resolveWith(
             (states) => THelperFunction.isDarkMode(context)

@@ -76,8 +76,9 @@ class MyData extends DataTableSource {
     return DataRow2(
       onTap: () {},
       selected: controller.selectedRows[index],
-      onSelectChanged: (value) =>
-          controller.selectedRows[index] = value ?? false,
+      onSelectChanged: (value) {
+        controller.selectedRows[index] = value ?? false;
+      },
       cells: [
         DataCell(Text(data['Column1'] ?? '')),
         DataCell(Text(data['Column2'] ?? '')),
@@ -112,8 +113,8 @@ class DashboardController extends GetxController {
 
   @override
   void onInit() {
-    fetchDummyData();
     super.onInit();
+    fetchDummyData();
   }
 
   void sortById(int sortColumnIndex, bool ascending) {
