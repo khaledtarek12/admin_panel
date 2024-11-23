@@ -12,31 +12,33 @@ class TAnimationLoaderWidgets extends StatelessWidget {
     this.showAction = false,
     this.actionText,
     this.onActionPressed,
+    this.height,
+    this.width, this.style,
   });
 
   final String text;
   final String animation;
+  final TextStyle? style;
   final bool showAction;
   final String? actionText;
   final VoidCallback? onActionPressed;
+  final double? height, width;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisSize: MainAxisSize.min, // Center the content vertically
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset(
             animation,
-            width: MediaQuery.of(context).size.width * 0.5, // Adjust size
-            height: MediaQuery.of(context).size.height * 0.5,
-            
-            fit: BoxFit.contain, // Maintain aspect ratio
+            width: width ?? MediaQuery.of(context).size.width * 0.5, // Adjust size
+            height: height?? MediaQuery.of(context).size.height * 0.5,
           ),
-          const SizedBox(height: TSizes.spaceBtwItems * 2),
+          const SizedBox(height: TSizes.defultSpace),
           Text(
             text,
-            style: Theme.of(context)
+            style: style ?? Theme.of(context)
                 .textTheme
                 .titleMedium!
                 .apply(color: TColors.white),

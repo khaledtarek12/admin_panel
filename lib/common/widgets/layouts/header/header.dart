@@ -23,8 +23,12 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
       decoration: BoxDecoration(
         color:
             THelperFunction.isDarkMode(context) ? TColors.black : TColors.white,
-        border: const Border(
-          bottom: BorderSide(color: TColors.darkerGrey, width: 2),
+        border: Border(
+          bottom: BorderSide(
+              color: THelperFunction.isDarkMode(context)
+                  ? TColors.darkerGrey
+                  : TColors.grey,
+              width: 2),
         ),
       ),
       padding: const EdgeInsets.symmetric(
