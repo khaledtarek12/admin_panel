@@ -37,8 +37,10 @@ class DashboardDesktopScreen extends StatelessWidget {
                             Text(controller.filterdDataList.length.toString()));
 
                     return TPaginatedDataTable(
+                      tableHeight: MediaQuery.of(context).size.height * .76,
                       sorColumnIndex: controller.sortColumnIndex.value,
                       sortAscending: controller.sortAscending.value,
+                      rowsPerPage: 10,
                       columns: [
                         const DataColumn2(label: Text('Colum 1')),
                         DataColumn2(

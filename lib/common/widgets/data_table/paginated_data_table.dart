@@ -93,7 +93,7 @@ class TPaginatedDataTable extends StatelessWidget {
           showFirstLastButtons: true,
           onPageChanged: onPageChanged,
           renderEmptyRowsInTheEnd: false,
-          availableRowsPerPage: const [12, 24],
+          availableRowsPerPage: const [10, 20],
           onRowsPerPageChanged: (noOfRows) {},
 
           // -- sorting
