@@ -2,7 +2,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/forget_password/forget_password.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/login/login.dart';
 import 'package:t_store_web_adimn/features/authentication/screens/reset_password/reset_password.dart';
-import 'package:t_store_web_adimn/features/personalization/screens/dashboard/dashboard.dart';
+import 'package:t_store_web_adimn/features/shop/screens/dashboard/dashboard.dart';
 import 'package:t_store_web_adimn/routes/route_middleware.dart';
 import 'package:t_store_web_adimn/routes/routes.dart';
 

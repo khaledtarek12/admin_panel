@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/constants/sizes.dart';
-
+import 'package:t_store_web_adimn/utils/helpers/helper_function.dart';
 
 class TRoundedContainer extends StatelessWidget {
   const TRoundedContainer({
@@ -9,12 +9,14 @@ class TRoundedContainer extends StatelessWidget {
     this.width,
     this.height,
     this.radius = TSizes.cardRadiusLg,
-    this.padding,
+    this.padding = const EdgeInsets.all(TSizes.lg),
     this.margin,
     this.child,
     this.backgroundCoIor = TColors.white,
-    this.showBorder = false,
     this.borderCoIor = TColors.borderPrimary,
+    this.showBorder = false,
+    this.showShadow = false,
+    this.onTap,
   });
 
   final double? width;
@@ -26,20 +28,36 @@ class TRoundedContainer extends StatelessWidget {
   final bool showBorder;
   final Color backgroundCoIor;
   final Color borderCoIor;
+  final bool showShadow;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      margin: margin,
-      padding: padding,
-      decoration: BoxDecoration(
-        border: showBorder ? Border.all(color: borderCoIor) : null,
-        borderRadius: BorderRadius.circular(radius),
-        color: backgroundCoIor,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        margin: margin,
+        padding: padding,
+        decoration: BoxDecoration(
+            color: THelperFunction.isDarkMode(context)
+                ? TColors.darkerGrey
+                : backgroundCoIor,
+            borderRadius: BorderRadius.circular(radius),
+            border: showBorder ? Border.all(color: borderCoIor) : null,
+            boxShadow: [
+              if (showShadow)
+                BoxShadow(
+                    color: THelperFunction.isDarkMode(context)
+                        ? TColors.darkGrey.withOpacity(0.1)
+                        : TColors.grey.withOpacity(0.3),
+                    spreadRadius: 5,
+                    blurRadius: 8,
+                    offset: const Offset(0, 3)),
+            ]),
+        child: child,
       ),
-      child: child,
     );
   }
 }
