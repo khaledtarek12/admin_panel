@@ -15,7 +15,7 @@ class TRoundedContainer extends StatelessWidget {
     this.backgroundCoIor = TColors.white,
     this.borderCoIor = TColors.borderPrimary,
     this.showBorder = false,
-    this.showShadow = false,
+    this.showShadow = true,
     this.onTap,
   });
 
@@ -50,7 +50,7 @@ class TRoundedContainer extends StatelessWidget {
               if (showShadow)
                 BoxShadow(
                     color: THelperFunction.isDarkMode(context)
-                        ? TColors.darkGrey.withOpacity(0.1)
+                        ? TColors.black.withOpacity(0.5)
                         : TColors.grey.withOpacity(0.3),
                     spreadRadius: 5,
                     blurRadius: 8,

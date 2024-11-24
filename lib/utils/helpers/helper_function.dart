@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:t_store_web_adimn/utils/constants/enums.dart';
 
 class THelperFunction {
   THelperFunction._();
@@ -131,5 +132,28 @@ class THelperFunction {
       ));
     }
     return wrapperList;
+  }
+
+  static DateTime getStartOfWeek(DateTime date) {
+    final int daysUntillMounday = date.weekday - 1;
+    final DateTime startOfWeek =
+        date.subtract(Duration(days: daysUntillMounday)).toLocal();
+    return DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day);
+  }
+
+  static Color getOrderStatusColor(OrderStatus status) {
+    if (OrderStatus.pending == status) {
+      return Colors.blue;
+    } else if (OrderStatus.processing == status) {
+      return Colors.orange;
+    } else if (OrderStatus.shiped == status) {
+      return Colors.purple;
+    } else if (OrderStatus.delivered == status) {
+      return Colors.green;
+    } else if (OrderStatus.cancelled == status) {
+      return Colors.red;
+    } else {
+      return Colors.grey;
+    }
   }
 }
