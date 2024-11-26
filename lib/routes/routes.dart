@@ -30,6 +30,6 @@ class TRoutes {
   static const editOrder = '/editOrder';
 
   static List sidebarMenuItems = [
-    dashboard,
+    dashboard,media
   ];
 }

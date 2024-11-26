@@ -13,7 +13,7 @@ class TRoundedlmage extends StatelessWidget {
     this.padding = TSizes.sm,
     this.border,
     this.width = 56,
-    this.hight = 56,
+    this.height = 56,
     this.image,
     this.fit = BoxFit.contain,
     this.applayImageRaduis = true,
@@ -35,14 +35,14 @@ class TRoundedlmage extends StatelessWidget {
   final Color? overLayColor;
   final Color? backgroundColor;
   final Uint8List? memoryImage;
-  final double width, hight, padding;
+  final double width, height, padding;
   final double? margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: hight,
+      height: height,
       padding: EdgeInsets.all(padding),
       margin: EdgeInsets.all(margin ?? 0),
       decoration: BoxDecoration(
@@ -87,7 +87,7 @@ class TRoundedlmage extends StatelessWidget {
         color: overLayColor,
         errorWidget: (context, url, error) => const Icon(Icons.error),
         progressIndicatorBuilder: (context, url, progress) =>
-            TShammerEffect(width: width, height: hight),
+            TShammerEffect(width: width, height: height),
       );
     } else {
       return Container();

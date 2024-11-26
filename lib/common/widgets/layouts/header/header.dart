@@ -34,6 +34,8 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(
           vertical: TSizes.sm, horizontal: TSizes.lg),
       child: AppBar(
+        automaticallyImplyLeading: false,
+
         /// Mobile Menu
         leading: !TDeviceUtility.isDesktopScreen(context)
             ? IconButton(
@@ -99,7 +101,7 @@ class THeader extends StatelessWidget implements PreferredSizeWidget {
                         : TImages.user,
                     width: 40,
                     padding: 2,
-                    hight: 40,
+                    height: 40,
                   );
                 },
               ),

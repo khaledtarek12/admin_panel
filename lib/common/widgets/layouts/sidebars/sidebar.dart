@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:t_store_web_adimn/common/widgets/images/t_circular_images.dart';
+import 'package:t_store_web_adimn/common/widgets/layouts/sidebars/menu/menu_item.dart';
+import 'package:t_store_web_adimn/routes/routes.dart';
 import 'package:t_store_web_adimn/utils/constants/colors.dart';
 import 'package:t_store_web_adimn/utils/constants/image_strings.dart';
 import 'package:t_store_web_adimn/utils/constants/sizes.dart';
@@ -54,17 +57,17 @@ class TSidebar extends StatelessWidget {
                     const SizedBox(height: TSizes.xs),
 
                     // Menu Items
-                    // const TMenuItem(
-                    //   itemName: 'Dashboard',
-                    //   icon: Iconsax.status,
-                    //   route: TRoutes.firstScreen,
-                    // ),
+                    const TMenuItem(
+                      itemName: 'Dashboard',
+                      icon: Iconsax.status,
+                      route: TRoutes.dashboard,
+                    ),
 
-                    // const TMenuItem(
-                    //   itemName: 'Media',
-                    //   icon: Iconsax.image,
-                    //   route: TRoutes.secondScreen,
-                    // ),
+                    const TMenuItem(
+                      itemName: 'Media',
+                      icon: Iconsax.image,
+                      route: TRoutes.media,
+                    ),
 
                     // const TMenuItem(
                     //   itemName: 'Banners',

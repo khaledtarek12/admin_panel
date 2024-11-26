@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store_web_adimn/common/widgets/custom_shapes/container/rounded_container.dart';
+import 'package:t_store_web_adimn/common/widgets/texts/seaction_heading.dart';
+import 'package:t_store_web_adimn/features/shop/screens/dashboard/table/data_table.dart';
 import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/dashboard_card.dart';
 import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/order_status_pie_chart.dart';
 import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/weekly_sales.dart';
@@ -47,7 +49,16 @@ class DashboardMobileScreen extends StatelessWidget {
               const TWeeklySalesGraph(),
               const SizedBox(height: TSizes.spaceBtwScetions),
               // -- Orders
-              const TRoundedContainer(),
+              const TRoundedContainer(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TSectionHeading(title: 'Recent Orders'),
+                    SizedBox(height: TSizes.spaceBtwScetions),
+                    DashboardDataTable(),
+                  ],
+                ),
+              ),
               const SizedBox(height: TSizes.spaceBtwScetions),
               // -- Pie Chart
               const OrderStatusPieChart(),
