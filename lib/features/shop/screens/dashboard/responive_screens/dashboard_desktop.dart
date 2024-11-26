@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/order_status_pie_chart.dart';
 import 'package:t_store_web_adimn/common/widgets/custom_shapes/container/rounded_container.dart';
 import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/dashboard_card.dart';
-import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/order_status_pie_chart.dart';
 import 'package:t_store_web_adimn/features/shop/screens/dashboard/widgets/weekly_sales.dart';
+import 'package:t_store_web_adimn/features/shop/screens/dashboard/table/data_table.dart';
+import 'package:t_store_web_adimn/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store_web_adimn/utils/constants/sizes.dart';
+import 'package:flutter/material.dart';
 
 class DashboardDesktopScreen extends StatelessWidget {
   const DashboardDesktopScreen({super.key});
@@ -70,7 +72,16 @@ class DashboardDesktopScreen extends StatelessWidget {
                         TWeeklySalesGraph(),
                         SizedBox(height: TSizes.spaceBtwScetions),
                         // -- Orders
-                        TRoundedContainer()
+                        TRoundedContainer(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TSectionHeading(title: 'Recent Orders'),
+                              SizedBox(height: TSizes.spaceBtwScetions),
+                              DashboardDataTable(),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),

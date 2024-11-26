@@ -61,13 +61,14 @@ class TPaginatedDataTable extends StatelessWidget {
           ),
         ),
         child: PaginatedDataTable2(
-          columnSpacing: 12,
+          source: source,
+          columns: columns,
+          columnSpacing: 14,
           minWidth: minWidth,
           dividerThickness: 0,
           horizontalMargin: 12,
           rowsPerPage: rowsPerPage,
           dataRowHeight: dataRowHeight,
-
           headingTextStyle: Theme.of(context).textTheme.titleMedium,
           headingRowColor: WidgetStateProperty.resolveWith(
             (states) => THelperFunction.isDarkMode(context)
@@ -86,17 +87,14 @@ class TPaginatedDataTable extends StatelessWidget {
             height: 200,
             width: 200,
           ),
-
           // -- check box
           showCheckboxColumn: true,
-
           // -- pagination
           showFirstLastButtons: true,
           onPageChanged: onPageChanged,
           renderEmptyRowsInTheEnd: false,
           availableRowsPerPage: const [10, 20],
           onRowsPerPageChanged: (noOfRows) {},
-
           // -- sorting
           sortAscending: sortAscending,
           sortArrowAlwaysVisible: true,
@@ -112,9 +110,6 @@ class TPaginatedDataTable extends StatelessWidget {
               return const Icon(Iconsax.arrow_3, size: TSizes.iconsSm);
             }
           },
-
-          columns: columns,
-          source: source,
         ),
       ),
     );

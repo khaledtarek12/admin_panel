@@ -18,32 +18,32 @@ class DashboardController extends GetxController {
         id: 'CWT0012',
         status: OrderStatus.processing,
         totalAmount: 265,
-        orderDate: DateTime(2024, 11, 20),
-        deliveryDate: DateTime(2024, 11, 20)),
+        orderDate: DateTime(2024, 11, 24),
+        deliveryDate: DateTime(2024, 11, 24)),
     OrderModel(
         id: 'CWT0025',
         status: OrderStatus.shiped,
         totalAmount: 369,
-        orderDate: DateTime(2024, 11, 21),
-        deliveryDate: DateTime(2024, 11, 21)),
+        orderDate: DateTime(2024, 11, 25),
+        deliveryDate: DateTime(2024, 11, 25)),
     OrderModel(
         id: 'CWT00152',
         status: OrderStatus.delivered,
         totalAmount: 254,
-        orderDate: DateTime(2024, 11, 22),
-        deliveryDate: DateTime(2024, 11, 22)),
+        orderDate: DateTime(2024, 11, 26),
+        deliveryDate: DateTime(2024, 11, 26)),
     OrderModel(
         id: 'CWT00265',
         status: OrderStatus.delivered,
         totalAmount: 355,
-        orderDate: DateTime(2024, 11, 23),
-        deliveryDate: DateTime(2024, 11, 23)),
+        orderDate: DateTime(2024, 11, 27),
+        deliveryDate: DateTime(2024, 11, 27)),
     OrderModel(
         id: 'CWT1536',
         status: OrderStatus.delivered,
         totalAmount: 115,
-        orderDate: DateTime(2024, 11, 24),
-        deliveryDate: DateTime(2024, 11, 24)),
+        orderDate: DateTime(2024, 11, 28),
+        deliveryDate: DateTime(2024, 11, 28)),
   ];
 
   @override

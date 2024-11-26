@@ -42,7 +42,7 @@ class TRoundedContainer extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
             color: THelperFunction.isDarkMode(context)
-                ? TColors.darkerGrey
+                ? TColors.darkerGrey.withOpacity(0.4)
                 : backgroundCoIor,
             borderRadius: BorderRadius.circular(radius),
             border: showBorder ? Border.all(color: borderCoIor) : null,
