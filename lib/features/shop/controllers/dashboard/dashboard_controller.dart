@@ -9,6 +9,8 @@ class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
 
   final RxList<double> weeklySales = <double>[].obs;
+  final RxMap<OrderStatus, int> orderStatusData = <OrderStatus, int>{}.obs;
+  final RxMap<OrderStatus, double> totalAmounts = <OrderStatus, double>{}.obs;
 
   // -- Order
   static final List<OrderModel> orders = [
@@ -47,6 +49,7 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     _calculateWeeklySales();
+    _calculateOrderStatusData();
     super.onInit();
   }
 
@@ -63,6 +66,23 @@ class DashboardController extends GetxController {
         weeklySales[index] += order.totalAmount;
         log('Weekly Sales: $weeklySales');
       }
+    }
+  }
+
+  // Catt this function to calculate Order Status counts
+  void _calculateOrderStatusData() {
+    // Reset status cata
+    orderStatusData.clear();
+    // Map to store totat amounts for each status
+    totalAmounts.value = {for (var status in OrderStatus.values) status: 0.0};
+
+    for (var order in orders) {
+      // count order
+      final status = order.status;
+      orderStatusData[status] = (orderStatusData[status] ?? 0) + 1;
+
+      // Calculate total amounts for each status
+      totalAmounts[status] = (totalAmounts[status] ?? 0) + order.totalAmount;
     }
   }
 }
