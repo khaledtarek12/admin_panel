@@ -15,8 +15,9 @@ class TImages {
   static const String pumaLogo = 'assets/logos/pumalogo.png';
   static const String smasoungLogo = 'assets/logos/smasounglogo.png';
 
-
-  static const String defaultMultiImageIcon = 'assets/icons/payment_methods/image.png';
+  static const String defaultMultiImageIcon =
+      'assets/icons/payment_methods/image.png';
+  static const String uploadimage = 'assets/images/loading/uploadimage.gif';
 
   static const String onboardingImage1 =
       'assets/images/on_boarding_images/onboarding1.gif';

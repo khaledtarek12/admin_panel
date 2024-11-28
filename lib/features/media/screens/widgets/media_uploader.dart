@@ -1,4 +1,6 @@
 // ignore_for_file: avoid_print
+import 'dart:typed_data';
+import 'package:t_store_web_adimn/features/media/models/image_model.module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:get/get.dart';
@@ -46,11 +48,29 @@ class MediaUploader extends StatelessWidget {
                                 onLeave: () => print('Zone Leaved'),
                                 onCreated: (controller) => zoneController
                                     .dropzoneController = controller,
-                                onDropFile: (file) => print(file.name),
                                 onDropInvalid: (value) =>
                                     print('Zone Invalid MIME : $value'),
                                 onDropFiles: (value) =>
                                     print('Zone drop Multiple : $value'),
+                                onDropFile: (file) async {
+                                  final bytes = await zoneController
+                                      .dropzoneController
+                                      .getFileData(file);
+                                  final convertedFile = await zoneController
+                                      .convertDropzoneFileToFile(file);
+                                  final image = ImageModel(
+                                    url: '',
+                                    file: convertedFile,
+                                    folder: '',
+                                    fileName: file.name,
+                                    localImageToDisplay:
+                                        Uint8List.fromList(bytes),
+                                  );
+                                  zoneController.selectedImageToUpload
+                                      .add(image);
+                                },
+                                onDropString: (value) =>
+                                    print('Zone Drop String: $value'),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -61,7 +81,8 @@ class MediaUploader extends StatelessWidget {
                                   const Text('Drag and Drop Images here'),
                                   const SizedBox(height: TSizes.spaceBtwItems),
                                   OutlinedButton(
-                                    onPressed: () {},
+                                    onPressed: () =>
+                                        zoneController.selectedLocalImages(),
                                     child: const Text('Select Images'),
                                   ),
                                 ],
@@ -75,126 +96,88 @@ class MediaUploader extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   /// Locatty Selected Images
-                  TRoundedContainer(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // Folders Drop down
-                            Row(
-                              children: [
-                                Text('Select Folder',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall),
-                                const SizedBox(width: TSizes.spaceBtwItems),
-                                MediaFolderDropdown(
-                                  onChange: (newValue) {
-                                    if (newValue != null) {
-                                      zoneController.selectedPath.value =
-                                          newValue;
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
+                  if (zoneController.selectedImageToUpload.isNotEmpty)
+                    TRoundedContainer(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Folders Drop down
+                              Row(
+                                children: [
+                                  Text('Select Folder',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall),
+                                  const SizedBox(width: TSizes.spaceBtwItems),
+                                  MediaFolderDropdown(
+                                    onChange: (newValue) {
+                                      if (newValue != null) {
+                                        zoneController.selectedPath.value =
+                                            newValue;
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
 
-                            Row(
-                              children: [
-                                TextButton(
-                                    onPressed: () {},
-                                    child: const Text('Remove All')),
-                                const SizedBox(width: TSizes.spaceBtwItems),
-                                TDeviceUtility.isMobileScreen(context)
-                                    ? const SizedBox.shrink()
-                                    : SizedBox(
-                                        width: TSizes.buttonWidth,
-                                        child: ElevatedButton(
-                                            onPressed: () {},
-                                            child: const Text('Upload')),
-                                      )
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: TSizes.spaceBtwScetions),
-                        const Wrap(
-                          alignment: WrapAlignment.start,
-                          spacing: TSizes.spaceBtwItems / 2,
-                          runSpacing: TSizes.spaceBtwItems / 2,
-                          children: [
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                            TRoundedlmage(
-                              width: 90,
-                              height: 90,
-                              padding: TSizes.sm,
-                              imageType: ImageType.asset,
-                              image: TImages.adidasLogo,
-                              backgroundColor: TColors.primaryBackground,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: TSizes.spaceBtwScetions),
-                        TDeviceUtility.isMobileScreen(context)
-                            ? SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text('Upload')),
-                              )
-                            : const SizedBox.shrink(),
-                      ],
+                              Row(
+                                children: [
+                                  TextButton(
+                                      onPressed: () => zoneController
+                                          .selectedImageToUpload
+                                          .clear(),
+                                      child: const Text('Remove All')),
+                                  const SizedBox(width: TSizes.spaceBtwItems),
+                                  TDeviceUtility.isMobileScreen(context)
+                                      ? const SizedBox.shrink()
+                                      : SizedBox(
+                                          width: TSizes.buttonWidth,
+                                          child: ElevatedButton(
+                                              onPressed: () => zoneController
+                                                  .uploadImagesConfirmation(),
+                                              child: const Text('Upload')),
+                                        )
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: TSizes.spaceBtwScetions),
+                          Wrap(
+                              alignment: WrapAlignment.start,
+                              spacing: TSizes.spaceBtwItems / 2,
+                              runSpacing: TSizes.spaceBtwItems / 2,
+                              children: zoneController.selectedImageToUpload
+                                  .where((image) =>
+                                      image.localImageToDisplay != null)
+                                  .map(
+                                    (element) => TRoundedlmage(
+                                      width: 90,
+                                      height: 90,
+                                      padding: 0,
+                                      fit: BoxFit.cover,
+                                      imageType: ImageType.memory,
+                                      memoryImage: element.localImageToDisplay,
+                                      backgroundColor:
+                                          TColors.primaryBackground,
+                                    ),
+                                  )
+                                  .toList()),
+                          const SizedBox(height: TSizes.spaceBtwScetions),
+                          TDeviceUtility.isMobileScreen(context)
+                              ? SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                      onPressed: () => zoneController
+                                          .uploadImagesConfirmation(),
+                                      child: const Text('Upload')),
+                                )
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
                     ),
-                  ),
                   const SizedBox(height: TSizes.spaceBtwScetions),
                 ],
               )

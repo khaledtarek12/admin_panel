@@ -2,6 +2,13 @@ class TTexts {
   static const String adminEmail = "tareqkhalid092@gmail.com";
   static const String adminPassword = "01008509785";
 
+    static const String bannerPath = "/Banners";
+  static const String brandPath = "/Brands";
+  static const String categoryPath = "/Categories";
+  static const String productPath = "/Products";
+  static const String userPath = "/Users";
+
+
   // Global Texts
   static const String submet = "Submit";
   static const String and = "And";
