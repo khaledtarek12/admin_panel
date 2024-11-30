@@ -43,6 +43,8 @@ class TImages {
   static const String user = 'assets/images/content/userAvatar.png';
 
   // Animation
+  static const String defultloadingAnimation = 'assets/images/loading/defultloadingAnimation.json';
+  static const String packageAnimation = 'assets/images/loading/packageAnimation.json';
   static const String loading = 'assets/images/loading/AnikiHamster.json';
   static const String cartEmpty = 'assets/images/loading/cartEmpty.json';
   static const String orderConfirmed =
